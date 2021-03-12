@@ -1,0 +1,140 @@
+-- Gerado por Oracle SQL Developer Data Modeler 18.2.0.179.0806
+--   em:        2021-03-12 19:12:40 GFT
+--   site:      Oracle Database 11g
+--   tipo:      Oracle Database 11g
+
+
+
+CREATE TABLE cliente (
+    id_cliente             NUMBER(10) NOT NULL,
+    nome                   VARCHAR2(30),
+    cpf                    VARCHAR2(11),
+    cnpj                   VARCHAR2(14),
+    status_cliente         VARCHAR2(10),
+    data_cadastro          DATE,
+    data_alteracao         DATE,
+    sexo                   VARCHAR2(10),
+    inscricao_estadual     VARCHAR2(15),
+    classe                 VARCHAR2(2),
+    razao_social           VARCHAR2(50),
+    nome_fantasia          VARCHAR2(50),
+    telefone               VARCHAR2(12),
+    email                  VARCHAR2(50),
+    endereco_id_endereco   NUMBER(10) NOT NULL
+);
+
+ALTER TABLE cliente ADD CONSTRAINT cliente_pk PRIMARY KEY ( id_cliente );
+
+CREATE TABLE conta (
+    id_conta             NUMBER(10) NOT NULL,
+    conta                VARCHAR2(10),
+    agencia              VARCHAR2(2),
+    nome                 VARCHAR2(40),
+    cliente_id_cliente   NUMBER(10) NOT NULL
+);
+
+ALTER TABLE conta ADD CONSTRAINT conta_pk PRIMARY KEY ( id_conta );
+
+CREATE TABLE endereco (
+    id_endereco      NUMBER(10) NOT NULL,
+    endereco         VARCHAR2(100),
+    numero           VARCHAR2(5),
+    bairro           VARCHAR2(30),
+    complemento      VARCHAR2(20),
+    cidade           VARCHAR2(20),
+    uf               VARCHAR2(2),
+    cep              VARCHAR2(10),
+    data_cadastro    DATE,
+    data_alteracao   DATE
+);
+
+ALTER TABLE endereco ADD CONSTRAINT endereco_pk PRIMARY KEY ( id_endereco );
+
+CREATE TABLE faz (
+    movimentacao_id_movimentacao   NUMBER(10) NOT NULL,
+    conta_id_conta                 NUMBER(10) NOT NULL
+);
+
+ALTER TABLE faz ADD CONSTRAINT faz_pk PRIMARY KEY ( movimentacao_id_movimentacao,
+                                                    conta_id_conta );
+
+CREATE TABLE movimentacao (
+    id_movimentacao   NUMBER(10) NOT NULL,
+    data_lancamento   DATE,
+    conta             VARCHAR2(30),
+    descricao         VARCHAR2(100),
+    tipo              VARCHAR2(10),
+    data_cadastro     DATE,
+    valor             NUMBER(8,2),
+    saldo             NUMBER(8,2)
+);
+
+CREATE TABLE log (
+    usuario        VARCHAR2(30 BYTE),
+    horario        DATE,
+    valor_antigo   VARCHAR2(10 BYTE),
+    valor_novo     VARCHAR2(10 BYTE)
+);
+
+ALTER TABLE movimentacao ADD CONSTRAINT movimentacao_pk PRIMARY KEY ( id_movimentacao );
+
+ALTER TABLE cliente
+    ADD CONSTRAINT cliente_endereco_fk FOREIGN KEY ( endereco_id_endereco )
+        REFERENCES endereco ( id_endereco );
+
+ALTER TABLE conta
+    ADD CONSTRAINT conta_cliente_fk FOREIGN KEY ( cliente_id_cliente )
+        REFERENCES cliente ( id_cliente );
+
+ALTER TABLE faz
+    ADD CONSTRAINT faz_conta_fk FOREIGN KEY ( conta_id_conta )
+        REFERENCES conta ( id_conta );
+
+ALTER TABLE faz
+    ADD CONSTRAINT faz_movimentacao_fk FOREIGN KEY ( movimentacao_id_movimentacao )
+        REFERENCES movimentacao ( id_movimentacao );
+
+
+
+-- Relatório do Resumo do Oracle SQL Developer Data Modeler: 
+-- 
+-- CREATE TABLE                             5
+-- CREATE INDEX                             0
+-- ALTER TABLE                              9
+-- CREATE VIEW                              0
+-- ALTER VIEW                               0
+-- CREATE PACKAGE                           0
+-- CREATE PACKAGE BODY                      0
+-- CREATE PROCEDURE                         0
+-- CREATE FUNCTION                          0
+-- CREATE TRIGGER                           0
+-- ALTER TRIGGER                            0
+-- CREATE COLLECTION TYPE                   0
+-- CREATE STRUCTURED TYPE                   0
+-- CREATE STRUCTURED TYPE BODY              0
+-- CREATE CLUSTER                           0
+-- CREATE CONTEXT                           0
+-- CREATE DATABASE                          0
+-- CREATE DIMENSION                         0
+-- CREATE DIRECTORY                         0
+-- CREATE DISK GROUP                        0
+-- CREATE ROLE                              0
+-- CREATE ROLLBACK SEGMENT                  0
+-- CREATE SEQUENCE                          0
+-- CREATE MATERIALIZED VIEW                 0
+-- CREATE MATERIALIZED VIEW LOG             0
+-- CREATE SYNONYM                           0
+-- CREATE TABLESPACE                        0
+-- CREATE USER                              0
+-- 
+-- DROP TABLESPACE                          0
+-- DROP DATABASE                            0
+-- 
+-- REDACTION POLICY                         0
+-- 
+-- ORDS DROP SCHEMA                         0
+-- ORDS ENABLE SCHEMA                       0
+-- ORDS ENABLE OBJECT                       0
+-- 
+-- ERRORS                                   0
+-- WARNINGS                                 0
