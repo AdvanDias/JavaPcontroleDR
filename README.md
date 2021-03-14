@@ -64,7 +64,6 @@ DECLARE<br>
 BEGIN<br>
     select MAX(id_cliente) into vid_cliente from cliente;<br>
     UPDATE CLIENTE SET STATUS_CLIENTE = 'A',DATA_CADASTRO = SYSDATE, DATA_ALTERACAO = SYSDATE WHERE id_cliente = vid_cliente;<br>
-    COMMIT;<br>
 END;<br>
 
 
