@@ -18,9 +18,9 @@ import java.sql.SQLException;
 public class ConexaoDb {
      private Connection conexao;
      private String driver = "oracle.jdbc.OracleDriver";
-     private String caminho = "jdbc:oracle:thin:@192.168.1.8:1521:XE";
-     private String senha = "1234";
-     private String Usuario = "Advan";
+     private String caminho = "jdbc:oracle:thin:@localhost:1521:XE";
+     private String senha = "8564";
+     private String Usuario = "Advan_Dias";
     
      /**
      * Conecta a um banco de dados (cria o banco se ele não existir)

@@ -9,7 +9,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,6 +24,7 @@ import util.ConexaoDb;
  */
 public class DAOConta extends ConexaoDb {
     
+    
      /**
      * SALVAR ENDERECO NO BANCO
      * @param pModelEndereco
@@ -29,14 +32,17 @@ public class DAOConta extends ConexaoDb {
      */
     public boolean SalvarConta(ModelConta pModelConta){
     conectar();
-    String sql = "INSERT INTO CONTA (ID_CONTA, CONTA, AGENCIA, NOME, CLIENTE_ID_CLIENTE) "
-            + "VALUES (SEQ_CONTA.nextval,?,?,?,?)";
+    String sql = "INSERT INTO CONTA (ID_CONTA, CONTA, AGENCIA, NOME, CLIENTE_ID_CLIENTE, TIPO, DATA_MOVI, VALOR) "
+            + "VALUES (SEQ_CONTA.nextval,?,?,?,?,?,?,?)";
     PreparedStatement preparedStatement = criarPreparedStatement(sql, Statement.RETURN_GENERATED_KEYS);
         try {
             preparedStatement.setString(1, pModelConta.getConta());
             preparedStatement.setString(2, pModelConta.getAgencia());
             preparedStatement.setString(3, pModelConta.getNomeconta());
             preparedStatement.setInt(4, pModelConta.getCliente_id_cliente());
+            preparedStatement.setString(5, pModelConta.getTipo());
+            preparedStatement.setString(6, pModelConta.getData());
+            preparedStatement.setFloat(7, pModelConta.getValor());
                  
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {

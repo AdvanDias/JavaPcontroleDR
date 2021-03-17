@@ -150,7 +150,20 @@ public class DAOCliente extends ConexaoDb{
              ResultSet resultSet = null;
              PreparedStatement preparedStatement = null;
              
-             String sql = "SELECT ID_CLIENTE, NOME, CPF, CNPJ, STATUS_CLIENTE, DATA_ALTERACAO, SEXO, INSCRICAO_ESTADUAL, CLASSE, RAZAO_SOCIAL, NOME_FANTASIA, TELEFONE, EMAIL FROM CLIENTE WHERE ID_CLIENTE = '"+pIdCliente+"'";
+             String sql = "SELECT ID_CLIENTE, "
+                     + "NOME, "
+                     + "CPF, "
+                     + "CNPJ, "
+                     + "STATUS_CLIENTE, "
+                     + "DATA_ALTERACAO, "
+                     + "SEXO, "
+                     + "INSCRICAO_ESTADUAL, "
+                     + "CLASSE, "
+                     + "RAZAO_SOCIAL, "
+                     + "NOME_FANTASIA, "
+                     + "TELEFONE, "
+                     + "EMAIL "
+                     + "FROM CLIENTE WHERE ID_CLIENTE = '"+pIdCliente+"'";
              
              preparedStatement = criarPreparedStatement(sql);
              

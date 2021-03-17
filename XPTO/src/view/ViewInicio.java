@@ -5,6 +5,10 @@
  */
 package view;
 
+import controller.ControllerIntegracao;
+import javax.swing.JOptionPane;
+import model.ModelIntegracao;
+
 /**
  *
  * @author Marilia
@@ -14,6 +18,8 @@ public class ViewInicio extends javax.swing.JFrame {
     ViewCliente viewCliente = new ViewCliente();
     ViewEndereco viewEndereco = new ViewEndereco();
     ViewConta viewConta = new ViewConta();
+    ModelIntegracao modelIntegracao = new ModelIntegracao();
+    ControllerIntegracao controllerIntegracao = new ControllerIntegracao();
     /**
      * Creates new form ViewInicio
      */
@@ -37,6 +43,7 @@ public class ViewInicio extends javax.swing.JFrame {
         BTN_CLIENTE = new javax.swing.JButton();
         BTN_ENDER = new javax.swing.JButton();
         BTN_CONTA = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,6 +68,13 @@ public class ViewInicio extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("SIMULAR MOVIMENTAÇÃO");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -69,7 +83,9 @@ public class ViewInicio extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addComponent(BTN_CLIENTE, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58)
-                .addComponent(BTN_ENDER, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BTN_ENDER, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(BTN_CONTA, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53))
@@ -86,7 +102,9 @@ public class ViewInicio extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                             .addGap(109, 109, 109)
                             .addComponent(BTN_CONTA, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -120,6 +138,44 @@ public class ViewInicio extends javax.swing.JFrame {
         viewConta.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_BTN_CONTAActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        //SIMULANDO A INTEGRAÇÃO
+        modelIntegracao = new ModelIntegracao();
+        String nome_cliente = "Teste";//confere se tem
+        String nome_conta = "integracao";//cadastra novo
+        String conta = "85645878";
+        String ag = "55";
+        float valor = 500;
+        String tipo = "Dispesa";
+        String Data_Movi = "01/01/1991";
+        
+        modelIntegracao.setNome_clinte(nome_cliente);
+        modelIntegracao.setNome_conta(nome_conta);
+        modelIntegracao.setConta(conta);
+        modelIntegracao.setAg(ag);
+        modelIntegracao.setValor(valor);
+        modelIntegracao.setTipo(tipo);
+        modelIntegracao.setData_movi(Data_Movi);
+        
+        if(controllerIntegracao.salvarIntegracaoController(modelIntegracao)){
+                //cadastrou
+                if(controllerIntegracao.validaStatusController()){
+                    //achou o 'E' na tabela integracao cliente não cadastrado
+                    JOptionPane.showMessageDialog(this, "Integração Realizada com Sucesso!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                }else{
+                    //integração OK
+                     JOptionPane.showMessageDialog(this, "ERRO CLIENTE NÃO CADASTRADO NO SISTEMA", "Erro", JOptionPane.ERROR_MESSAGE);
+                }
+                    
+        }else{
+           //não cadastrou
+           JOptionPane.showMessageDialog(this, "Erro na Integração", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,6 +216,7 @@ public class ViewInicio extends javax.swing.JFrame {
     private javax.swing.JButton BTN_CLIENTE;
     private javax.swing.JButton BTN_CONTA;
     private javax.swing.JButton BTN_ENDER;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

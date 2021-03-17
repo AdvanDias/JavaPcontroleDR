@@ -5,6 +5,11 @@
  */
 package model;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.Date;
+
 /**
  *
  * @author 
@@ -16,6 +21,10 @@ public class ModelConta {
     private String agencia;
     private String nomeconta;
     private int cliente_id_cliente;
+    private String tipo;
+    private String data;
+    private float valor;
+    
 
     /**
      * @return the id_conta
@@ -85,6 +94,49 @@ public class ModelConta {
      */
     public void setCliente_id_cliente(int cliente_id_cliente) {
         this.cliente_id_cliente = cliente_id_cliente;
+    }
+
+    /**
+     * @return the tipo
+     */
+    public String getTipo() {
+        return tipo;
+    }
+
+    /**
+     * @param tipo the tipo to set
+     */
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    /**
+     * @return the data
+     */
+    public String getData() {
+       
+        return data;
+    }
+
+    /**
+     * @param data the data to set
+     */
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    /**
+     * @return the valor
+     */
+    public float getValor() {
+        return valor;
+    }
+
+    /**
+     * @param valor the valor to set
+     */
+    public void setValor(float valor) {
+        this.valor = valor;
     }
     
     
