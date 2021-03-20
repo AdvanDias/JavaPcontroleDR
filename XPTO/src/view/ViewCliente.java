@@ -51,12 +51,10 @@ public class ViewCliente extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         View_Cli_Nome = new javax.swing.JTextField();
-        View_Cli_CPF = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         View_ComboBox_M_F = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        View_Cli_CNPJ = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         View_Cli_RSocial = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -70,7 +68,6 @@ public class ViewCliente extends javax.swing.JFrame {
         View_Cli_Bt_Limpar = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        View_Cli_Tel = new javax.swing.JTextField();
         View_Cli_Email = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         View_Cli_Id = new javax.swing.JTextField();
@@ -78,6 +75,11 @@ public class ViewCliente extends javax.swing.JFrame {
         View_Cli_Bt_Excluir = new javax.swing.JButton();
         View_ComboBox_PJ_PF = new javax.swing.JComboBox<>();
         btn_voltar_cli = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        View_Con_Capital = new javax.swing.JFormattedTextField();
+        View_Cli_CPF = new javax.swing.JFormattedTextField();
+        View_Cli_Tel = new javax.swing.JFormattedTextField();
+        View_Cli_CNPJ = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -188,6 +190,29 @@ public class ViewCliente extends javax.swing.JFrame {
             }
         });
 
+        jLabel13.setText("Capital");
+
+        View_Con_Capital.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("¤#,##0.00"))));
+        View_Con_Capital.setText("R$");
+
+        try {
+            View_Cli_CPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            View_Cli_Tel.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            View_Cli_CNPJ.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout Painel1Layout = new javax.swing.GroupLayout(Painel1);
         Painel1.setLayout(Painel1Layout);
         Painel1Layout.setHorizontalGroup(
@@ -205,10 +230,10 @@ public class ViewCliente extends javax.swing.JFrame {
                         .addComponent(View_Cli_Bt_Excluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jScrollPane1)
                     .addGroup(Painel1Layout.createSequentialGroup()
-                        .addGroup(Painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(View_Cli_CNPJ, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(Painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(View_Cli_CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(Painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addComponent(View_Cli_RSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -230,16 +255,16 @@ public class ViewCliente extends javax.swing.JFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(Painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(View_Cli_CPF, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
+                            .addComponent(jLabel4)
+                            .addComponent(View_Cli_CPF, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(Painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(View_ComboBox_M_F, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
                         .addGap(18, 18, 18)
                         .addGroup(Painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(View_Cli_Tel, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10))
+                            .addComponent(jLabel10)
+                            .addComponent(View_Cli_Tel, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(Painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(View_Cli_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -253,6 +278,10 @@ public class ViewCliente extends javax.swing.JFrame {
                         .addGroup(Painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(View_ComboBox_PJ_PF, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(Painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13)
+                            .addComponent(View_Con_Capital, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(Painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
@@ -269,12 +298,14 @@ public class ViewCliente extends javax.swing.JFrame {
                 .addGroup(Painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel9)
-                    .addComponent(jLabel12))
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel13))
                 .addGap(6, 6, 6)
                 .addGroup(Painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(View_Cli_Id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(View_Cli_DataCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(View_ComboBox_PJ_PF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(View_ComboBox_PJ_PF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(View_Con_Capital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(Painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -307,10 +338,10 @@ public class ViewCliente extends javax.swing.JFrame {
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(View_Cli_CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(View_Cli_RSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(View_Cli_InscEstadual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(View_Cli_NFantasia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(View_Cli_NFantasia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(View_Cli_CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
@@ -343,15 +374,16 @@ public class ViewCliente extends javax.swing.JFrame {
         modelCliente = new ModelCliente();
         modelCliente.setId(Integer.parseInt(View_Cli_Id.getText()));
         modelCliente.setNome(View_Cli_Nome.getText());
-        modelCliente.setCpf(View_Cli_CPF.getText());
-        modelCliente.setCnpj(View_Cli_CNPJ.getText());
+        modelCliente.setCpf(View_Cli_CPF.getText().replace(" ", "").replace(".", "").replace("-", ""));
+        modelCliente.setCnpj(View_Cli_CNPJ.getText().replace(" ", "").replace(".", "").replace("-", "").replace("/", ""));
         modelCliente.setSexo(View_ComboBox_M_F.getSelectedItem().toString());
         modelCliente.setInscricao_estadual(View_Cli_InscEstadual.getText());
         modelCliente.setRazao_social(View_Cli_RSocial.getText());
         modelCliente.setNome_fantasia(View_Cli_NFantasia.getText());
-        modelCliente.setTelefone(View_Cli_Tel.getText());
+        modelCliente.setTelefone(View_Cli_Tel.getText().replace(" ", "").replace("(", "").replace(") ", "").replace("-", ""));
         modelCliente.setEmail(View_Cli_Email.getText());
         modelCliente.setclasse_cli(View_ComboBox_PJ_PF.getSelectedItem().toString());
+        modelCliente.setCapital(Float.parseFloat(View_Con_Capital.getText().replace("R$", "").replace(".", "").replace(",", ".")));
       
         
         if(AltCadas.equals("Cadastrar")){
@@ -367,18 +399,12 @@ public class ViewCliente extends javax.swing.JFrame {
                     carregarListaCliente();
                     carregaCodigo();
                     if(!View_Cli_Id.getText().isEmpty()){
-                        if(viewEndereco==null){
-                            viewEndereco = new ViewEndereco();
-                            viewEndereco.setLocationRelativeTo(null);
-                            viewEndereco.setVisible(true);
-                            viewEndereco.setResizable(false);
-                        }else{
-                            viewEndereco.setLocationRelativeTo(null);
-                            viewEndereco.setVisible(true);
-                            viewEndereco.setResizable(false);
-                        }
                         
                         viewEndereco.enviaidcliente(modelCliente.getId());
+                        viewEndereco.setLocationRelativeTo(null);
+                        viewEndereco.setVisible(true);
+                        viewEndereco.setResizable(false);
+                        setVisible(false);
                     }
                     
                 }else{
@@ -407,10 +433,6 @@ public class ViewCliente extends javax.swing.JFrame {
 
                 }
         }
-        
-        
-     
-       
 
     }//GEN-LAST:event_View_Cli_Bt_SalvarActionPerformed
 
@@ -432,6 +454,7 @@ public class ViewCliente extends javax.swing.JFrame {
         View_Cli_Tel.setText("");
         View_Cli_Email.setText("");
         View_ComboBox_PJ_PF.setSelectedItem("-");
+        View_Con_Capital.setText("");
         
         AltCadas = "Cadastrar";
        
@@ -576,6 +599,7 @@ public class ViewCliente extends javax.swing.JFrame {
             View_Cli_RSocial.setText(modelCliente.getRazao_social());
             View_Cli_InscEstadual.setText(modelCliente.getInscricao_estadual());
             View_Cli_NFantasia.setText(modelCliente.getNome_fantasia());
+            View_Con_Capital.setText("R$"+Float.toString(modelCliente.getCapital()).replace(".", ","));
             
              regraCampoClasseCli();
             
@@ -638,8 +662,8 @@ public class ViewCliente extends javax.swing.JFrame {
     private javax.swing.JButton View_Cli_Bt_Excluir;
     private javax.swing.JButton View_Cli_Bt_Limpar;
     private javax.swing.JButton View_Cli_Bt_Salvar;
-    private javax.swing.JTextField View_Cli_CNPJ;
-    private javax.swing.JTextField View_Cli_CPF;
+    private javax.swing.JFormattedTextField View_Cli_CNPJ;
+    private javax.swing.JFormattedTextField View_Cli_CPF;
     private javax.swing.JTextField View_Cli_DataCadastro;
     private javax.swing.JTextField View_Cli_Email;
     private javax.swing.JTextField View_Cli_Id;
@@ -648,14 +672,16 @@ public class ViewCliente extends javax.swing.JFrame {
     private javax.swing.JTextField View_Cli_Nome;
     private javax.swing.JTextField View_Cli_RSocial;
     private javax.swing.JTable View_Cli_Tabela;
-    private javax.swing.JTextField View_Cli_Tel;
+    private javax.swing.JFormattedTextField View_Cli_Tel;
     private javax.swing.JComboBox<String> View_ComboBox_M_F;
     private javax.swing.JComboBox<String> View_ComboBox_PJ_PF;
+    private javax.swing.JFormattedTextField View_Con_Capital;
     private javax.swing.JButton btn_voltar_cli;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

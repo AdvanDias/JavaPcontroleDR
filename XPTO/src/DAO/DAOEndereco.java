@@ -66,7 +66,7 @@ public class DAOEndereco extends ConexaoDb {
         ResultSet resultSet = null;
         PreparedStatement preparedStatement = null;
         
-        String sql = "SELECT ID_ENDERECO, ENDERECO, NUMERO, BAIRRO, COMPLEMENTO, CIDADE, UF, CEP FROM ENDERECO";
+        String sql = "SELECT ID_ENDERECO, ENDERECO, NUMERO, BAIRRO, COMPLEMENTO, CIDADE, UF, CEP, CLIENTE_ID_CLIENTE FROM ENDERECO";
         
         try{
             preparedStatement = criarPreparedStatement(sql);
@@ -82,6 +82,7 @@ public class DAOEndereco extends ConexaoDb {
                 modelEndereco.setCidade(resultSet.getString(6));
                 modelEndereco.setUf(resultSet.getString(7));
                 modelEndereco.setCep(resultSet.getString(8));
+                modelEndereco.setCliente_id_cliente(resultSet.getInt(9));
         
                 listaEndereco.add(modelEndereco);
 
@@ -132,7 +133,17 @@ public class DAOEndereco extends ConexaoDb {
              ResultSet resultSet = null;
              PreparedStatement preparedStatement = null;
              
-             String sql = "SELECT ID_ENDERECO, ENDERECO, NUMERO, BAIRRO, COMPLEMENTO, CIDADE, UF, CEP FROM ENDERECO WHERE ID_ENDERECO = '"+pIdEndere+"'";
+             String sql = "SELECT "
+                     + "ID_ENDERECO, "
+                     + "ENDERECO, "
+                     + "NUMERO, "
+                     + "BAIRRO, "
+                     + "COMPLEMENTO, "
+                     + "CIDADE, "
+                     + "UF, "
+                     + "CEP, "
+                     + "CLIENTE_ID_CLIENTE "
+                     + "FROM ENDERECO WHERE ID_ENDERECO = '"+pIdEndere+"'";
              
              preparedStatement = criarPreparedStatement(sql);
              
@@ -149,6 +160,7 @@ public class DAOEndereco extends ConexaoDb {
                 modelEndereco.setCidade(resultSet.getString("CIDADE"));
                 modelEndereco.setUf(resultSet.getString("UF"));
                 modelEndereco.setCep(resultSet.getString("CEP"));
+                modelEndereco.setCliente_id_cliente(resultSet.getInt("CLIENTE_ID_CLIENTE"));
               
              }
          } catch (SQLException ex) {

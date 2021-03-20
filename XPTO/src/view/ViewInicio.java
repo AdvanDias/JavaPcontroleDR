@@ -15,6 +15,7 @@ import model.ModelIntegracao;
  */
 public class ViewInicio extends javax.swing.JFrame {
 
+    ViewMovimentacao viewMovimentacao = new ViewMovimentacao();
     ViewCliente viewCliente = new ViewCliente();
     ViewEndereco viewEndereco = new ViewEndereco();
     ViewConta viewConta = new ViewConta();
@@ -40,78 +41,132 @@ public class ViewInicio extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        BTN_CLIENTE = new javax.swing.JButton();
-        BTN_ENDER = new javax.swing.JButton();
-        BTN_CONTA = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        Menu_Cliente = new javax.swing.JMenu();
+        Menu_Item_Cli = new javax.swing.JMenuItem();
+        Menu_Ende = new javax.swing.JMenu();
+        Menu_Item_End = new javax.swing.JMenuItem();
+        Menu_Conta = new javax.swing.JMenu();
+        Menu_Item_Con = new javax.swing.JMenuItem();
+        Menu_Movi = new javax.swing.JMenu();
+        Menu_Item_Movi = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        Menu_Item_Simul = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        BTN_CLIENTE.setText("CLIENTE");
-        BTN_CLIENTE.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_CLIENTEActionPerformed(evt);
-            }
-        });
-
-        BTN_ENDER.setText("ENDEREÇO");
-        BTN_ENDER.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_ENDERActionPerformed(evt);
-            }
-        });
-
-        BTN_CONTA.setText("CONTA");
-        BTN_CONTA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_CONTAActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("SIMULAR MOVIMENTAÇÃO");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jLabel1.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
+        jLabel1.setText("PROJETO JAVA TOP");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(BTN_CLIENTE, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BTN_ENDER, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addComponent(BTN_CONTA, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53))
+                .addGap(150, 150, 150)
+                .addComponent(jLabel1)
+                .addContainerGap(240, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(BTN_CLIENTE, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(BTN_ENDER, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addGap(109, 109, 109)
-                            .addComponent(BTN_CONTA, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(36, 36, 36)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addGap(149, 149, 149)
+                .addComponent(jLabel1)
+                .addContainerGap(194, Short.MAX_VALUE))
         );
+
+        jMenu1.setText("Arquivo");
+
+        jMenuItem2.setText("Imprimir");
+        jMenu1.add(jMenuItem2);
+
+        jMenuItem3.setText("Importar");
+        jMenu1.add(jMenuItem3);
+
+        jMenuItem4.setText("Exportar");
+        jMenu1.add(jMenuItem4);
+        jMenu1.add(jSeparator1);
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setText("Sair");
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        Menu_Cliente.setText("Cliente");
+
+        Menu_Item_Cli.setText("Novo Cliente");
+        Menu_Item_Cli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Menu_Item_CliActionPerformed(evt);
+            }
+        });
+        Menu_Cliente.add(Menu_Item_Cli);
+
+        jMenuBar1.add(Menu_Cliente);
+
+        Menu_Ende.setText("Endereço");
+
+        Menu_Item_End.setText("Novo Endereço");
+        Menu_Item_End.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Menu_Item_EndActionPerformed(evt);
+            }
+        });
+        Menu_Ende.add(Menu_Item_End);
+
+        jMenuBar1.add(Menu_Ende);
+
+        Menu_Conta.setText("Conta");
+
+        Menu_Item_Con.setText("Nova Conta");
+        Menu_Item_Con.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Menu_Item_ConActionPerformed(evt);
+            }
+        });
+        Menu_Conta.add(Menu_Item_Con);
+
+        jMenuBar1.add(Menu_Conta);
+
+        Menu_Movi.setText("Movimentação");
+
+        Menu_Item_Movi.setText("Abrir");
+        Menu_Item_Movi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Menu_Item_MoviActionPerformed(evt);
+            }
+        });
+        Menu_Movi.add(Menu_Item_Movi);
+
+        jMenuBar1.add(Menu_Movi);
+
+        jMenu2.setText("Simulação");
+
+        Menu_Item_Simul.setText("Simular");
+        Menu_Item_Simul.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Menu_Item_SimulActionPerformed(evt);
+            }
+        });
+        jMenu2.add(Menu_Item_Simul);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,29 +176,36 @@ public class ViewInicio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BTN_CLIENTEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_CLIENTEActionPerformed
-        // TODO add your handling code here:
-         viewCliente.setVisible(true);
-         setVisible(false);
-    }//GEN-LAST:event_BTN_CLIENTEActionPerformed
-
-    private void BTN_ENDERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ENDERActionPerformed
+    private void Menu_Item_EndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Menu_Item_EndActionPerformed
         // TODO add your handling code here:
         viewEndereco.setVisible(true);
         setVisible(false);
-    }//GEN-LAST:event_BTN_ENDERActionPerformed
+    }//GEN-LAST:event_Menu_Item_EndActionPerformed
 
-    private void BTN_CONTAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_CONTAActionPerformed
+    private void Menu_Item_MoviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Menu_Item_MoviActionPerformed
         // TODO add your handling code here:
-        viewConta.setVisible(true);
+         viewMovimentacao.setVisible(true);
         setVisible(false);
-    }//GEN-LAST:event_BTN_CONTAActionPerformed
+    }//GEN-LAST:event_Menu_Item_MoviActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void Menu_Item_CliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Menu_Item_CliActionPerformed
         // TODO add your handling code here:
+        viewCliente.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_Menu_Item_CliActionPerformed
+
+    private void Menu_Item_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Menu_Item_ConActionPerformed
+        // TODO add your handling code here:
+         viewConta.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_Menu_Item_ConActionPerformed
+
+    private void Menu_Item_SimulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Menu_Item_SimulActionPerformed
+        // TODO add your handling code here:
+               // TODO add your handling code here:
         //SIMULANDO A INTEGRAÇÃO
         modelIntegracao = new ModelIntegracao();
-        String nome_cliente = "Teste";//confere se tem
+        String nome_cliente = "cliente";//confere se tem
         String nome_conta = "integracao";//cadastra novo
         String conta = "85645878";
         String ag = "55";
@@ -174,8 +236,7 @@ public class ViewInicio extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(this, "Erro na Integração", "Erro", JOptionPane.ERROR_MESSAGE);
         }
         
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_Menu_Item_SimulActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,10 +274,24 @@ public class ViewInicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BTN_CLIENTE;
-    private javax.swing.JButton BTN_CONTA;
-    private javax.swing.JButton BTN_ENDER;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JMenu Menu_Cliente;
+    private javax.swing.JMenu Menu_Conta;
+    private javax.swing.JMenu Menu_Ende;
+    private javax.swing.JMenuItem Menu_Item_Cli;
+    private javax.swing.JMenuItem Menu_Item_Con;
+    private javax.swing.JMenuItem Menu_Item_End;
+    private javax.swing.JMenuItem Menu_Item_Movi;
+    private javax.swing.JMenuItem Menu_Item_Simul;
+    private javax.swing.JMenu Menu_Movi;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

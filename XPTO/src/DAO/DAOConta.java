@@ -112,7 +112,16 @@ public class DAOConta extends ConexaoDb {
         ResultSet resultSet = null;
         PreparedStatement preparedStatement = null;
         
-        String sql = "SELECT ID_CONTA, CONTA, AGENCIA, NOME, CLIENTE_ID_CLIENTE FROM CONTA";
+        String sql = "SELECT "
+                + "ID_CONTA, "
+                + "CONTA, "
+                + "AGENCIA, "
+                + "NOME, "
+                + "CLIENTE_ID_CLIENTE, "
+                + "VALOR, "
+                + "TIPO, "
+                + "DATA_MOVI "
+                + "FROM CONTA";
         
         try{
             preparedStatement = criarPreparedStatement(sql);
@@ -125,6 +134,9 @@ public class DAOConta extends ConexaoDb {
                 modelConta.setAgencia(resultSet.getString("AGENCIA"));
                 modelConta.setNomeconta(resultSet.getString("NOME"));
                 modelConta.setCliente_id_cliente(resultSet.getInt("CLIENTE_ID_CLIENTE"));
+                modelConta.setValor(resultSet.getFloat("VALOR"));
+                modelConta.setTipo(resultSet.getString("TIPO"));
+                modelConta.setData(resultSet.getString("DATA_MOVI"));
 
                 listaConta.add(modelConta);
 
@@ -151,7 +163,10 @@ public class DAOConta extends ConexaoDb {
                  + "CONTA =?,"
                  + "AGENCIA =?,"
                  + "NOME =?,"
-                 + "CLIENTE_ID_CLIENTE =? "
+                 + "CLIENTE_ID_CLIENTE =?, "
+                 + "TIPO =?, "
+                 + "VALOR =?, "
+                 + "DATA_MOVI =? " 
                  + "WHERE ID_CONTA = '"+pmodelConta.getId_conta()+"'";
          preparedStatement = this.criarPreparedStatement(sql);
          try {
@@ -159,6 +174,9 @@ public class DAOConta extends ConexaoDb {
              preparedStatement.setString(2, pmodelConta.getAgencia());
              preparedStatement.setString(3, pmodelConta.getNomeconta());
              preparedStatement.setInt(4, pmodelConta.getCliente_id_cliente());
+             preparedStatement.setString(5, pmodelConta.getTipo());
+             preparedStatement.setFloat(6, pmodelConta.getValor());
+             preparedStatement.setString(7, pmodelConta.getData());
              
 
 

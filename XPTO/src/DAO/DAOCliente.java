@@ -24,8 +24,20 @@ import util.ConexaoDb;
 public class DAOCliente extends ConexaoDb{
     public boolean SalvarCliente(ModelCliente pModelCliente){
     conectar();
-    String sql = "INSERT INTO CLIENTE (ID_CLIENTE, NOME, CPF, CNPJ, SEXO, INSCRICAO_ESTADUAL, CLASSE, RAZAO_SOCIAL, NOME_FANTASIA, TELEFONE, EMAIL) "
-            + "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+    String sql = "INSERT INTO CLIENTE "
+            + "(ID_CLIENTE, "
+            + "NOME, "
+            + "CPF, "
+            + "CNPJ, "
+            + "SEXO, "
+            + "INSCRICAO_ESTADUAL, "
+            + "CLASSE, "
+            + "RAZAO_SOCIAL, "
+            + "NOME_FANTASIA, "
+            + "TELEFONE, "
+            + "EMAIL, "
+            + "CAPITAL)"
+            + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
     PreparedStatement preparedStatement = criarPreparedStatement(sql, Statement.RETURN_GENERATED_KEYS);
         try {
             preparedStatement.setInt(1, pModelCliente.getId());
@@ -39,6 +51,7 @@ public class DAOCliente extends ConexaoDb{
             preparedStatement.setString(9, pModelCliente.getNome_fantasia());
             preparedStatement.setString(10, pModelCliente.getTelefone());
             preparedStatement.setString(11, pModelCliente.getEmail());
+            preparedStatement.setFloat(12, pModelCliente.getCapital());
             
            
             preparedStatement.executeUpdate();
@@ -58,7 +71,21 @@ public class DAOCliente extends ConexaoDb{
         ResultSet resultSet = null;
         PreparedStatement preparedStatement = null;
         
-        String sql = "SELECT ID_CLIENTE, NOME, CPF, CNPJ, STATUS_CLIENTE, DATA_CADASTRO, SEXO, INSCRICAO_ESTADUAL, CLASSE, RAZAO_SOCIAL, NOME_FANTASIA, TELEFONE, EMAIL FROM CLIENTE";
+        String sql = "SELECT ID_CLIENTE, "
+                + "NOME, "
+                + "CPF, "
+                + "CNPJ, "
+                + "STATUS_CLIENTE, "
+                + "DATA_CADASTRO, "
+                + "SEXO, "
+                + "INSCRICAO_ESTADUAL, "
+                + "CLASSE, "
+                + "RAZAO_SOCIAL, "
+                + "NOME_FANTASIA, "
+                + "TELEFONE, "
+                + "EMAIL, "
+                + "CAPITAL "
+                + "FROM CLIENTE";
         
         try{
             preparedStatement = criarPreparedStatement(sql);
@@ -79,7 +106,9 @@ public class DAOCliente extends ConexaoDb{
                 modelCliente.setNome_fantasia(resultSet.getString(11));
                 modelCliente.setTelefone(resultSet.getString(12));
                 modelCliente.setEmail(resultSet.getString(13));
+                modelCliente.setCapital(resultSet.getFloat(14));
                 listaCliente.add(modelCliente);
+                
 
             }
         }catch(Exception e){
@@ -162,7 +191,8 @@ public class DAOCliente extends ConexaoDb{
                      + "RAZAO_SOCIAL, "
                      + "NOME_FANTASIA, "
                      + "TELEFONE, "
-                     + "EMAIL "
+                     + "EMAIL, "
+                     + "CAPITAL "
                      + "FROM CLIENTE WHERE ID_CLIENTE = '"+pIdCliente+"'";
              
              preparedStatement = criarPreparedStatement(sql);
@@ -185,6 +215,7 @@ public class DAOCliente extends ConexaoDb{
                 modelCliente.setNome_fantasia(resultSet.getString("NOME_FANTASIA"));
                 modelCliente.setTelefone(resultSet.getString("TELEFONE"));
                 modelCliente.setEmail(resultSet.getString("EMAIL"));
+                modelCliente.setCapital(resultSet.getFloat("CAPITAL"));
                
                  
              }
@@ -216,7 +247,8 @@ public class DAOCliente extends ConexaoDb{
                  + "RAZAO_SOCIAL =?,"
                  + "NOME_FANTASIA =?,"
                  + "TELEFONE =?,"
-                 + "EMAIL =? "
+                 + "EMAIL =?, "
+                 + "CAPITAL=? "
                  + "WHERE ID_CLIENTE = '"+pmodelCliente.getId()+"'";
          preparedStatement = this.criarPreparedStatement(sql);
          try {
@@ -230,6 +262,7 @@ public class DAOCliente extends ConexaoDb{
              preparedStatement.setString(8, pmodelCliente.getNome_fantasia());
              preparedStatement.setString(9, pmodelCliente.getTelefone());
              preparedStatement.setString(10, pmodelCliente.getEmail());
+             preparedStatement.setFloat(11, pmodelCliente.getCapital());
              
             
              preparedStatement.executeUpdate();

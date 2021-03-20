@@ -31,6 +31,7 @@ public class ModelCliente {
     private String nome_fantasia;
     private String telefone;
     private String email;
+    private float capital;
 
     
     /**
@@ -227,6 +228,20 @@ public class ModelCliente {
      */
     public void setData_alteracao(Date data_alteracao) {
         this.data_alteracao = data_alteracao;
+    }
+
+    /**
+     * @return the capital
+     */
+    public float getCapital() {
+        return capital;
+    }
+
+    /**
+     * @param capital the capital to set
+     */
+    public void setCapital(float capital) {
+        this.capital = capital;
     }
 
    

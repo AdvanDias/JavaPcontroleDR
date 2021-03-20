@@ -154,9 +154,9 @@ public class ViewConta extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(View_Conta_Table);
         if (View_Conta_Table.getColumnModel().getColumnCount() > 0) {
-            View_Conta_Table.getColumnModel().getColumn(0).setMinWidth(1);
-            View_Conta_Table.getColumnModel().getColumn(0).setPreferredWidth(1);
-            View_Conta_Table.getColumnModel().getColumn(0).setMaxWidth(1);
+            View_Conta_Table.getColumnModel().getColumn(0).setMinWidth(50);
+            View_Conta_Table.getColumnModel().getColumn(0).setPreferredWidth(50);
+            View_Conta_Table.getColumnModel().getColumn(0).setMaxWidth(50);
             View_Conta_Table.getColumnModel().getColumn(2).setMinWidth(100);
             View_Conta_Table.getColumnModel().getColumn(2).setPreferredWidth(100);
             View_Conta_Table.getColumnModel().getColumn(2).setMaxWidth(100);
